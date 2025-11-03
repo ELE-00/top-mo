@@ -1,3 +1,32 @@
 
 
-<h1>SIGN UP VIEW</h1>
+<h1>Become a member</h1>
+
+<% if (typeof error !== "undefined") { %>
+  <div style="color: red;"><%= error %></div>
+<% } %>
+
+<form method="POST" action="/sign-up">
+
+    <label>Username</label>
+    <input type="text" placeholder="Jack1993" name="userName" required></input>
+
+    <label>Full Name</label>
+    <input type="text" placeholder="Jack Black" name="fullName" required></input>
+
+    <label>Password</label>
+    <input type="password" name="password" required></input>
+
+    <label>Confirm Password</label>
+    <input type="password" name="passwordConfirm" required></input>
+
+    <button type="Submit">Submit</button>
+</form>
+
+
+
+
+
+
+
+<p>Already have an account? Log-in <a href="/log-in">here</a></p>

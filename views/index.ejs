@@ -1,2 +1,18 @@
 
-<h1>HOMEPAGE VIEW</h1>
+<h1>Homepage</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Log In</title>
+</head>
+<body>
+  <% if (user) {%>
+    <h1>WELCOME BACK <%= user.username %></h1>
+    <a href="/log-out">LOG OUT</a>
+  <% } else { %>
+    <h1>please log in <a href="/log-in">LOG IN</a></h1>
+  <%}%>
+</body>
+</html>
