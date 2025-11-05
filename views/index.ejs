@@ -1,18 +1,47 @@
 
-<h1>Homepage</h1>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Log In</title>
+  <title>Home</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <% if (user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
-  <% } else { %>
-    <h1>please log in <a href="/log-in">LOG IN</a></h1>
-  <%}%>
+
+    <div class="headerSection">
+        <% if (user) {%>
+            <p class="headerText"><a href="/newmessage">New message</a></p>
+            <p class="headerText"><a href="/log-out">Log out</a></p>
+        <% } else { %>
+            <p class="headerText"><a href="/sign-up">Sign up</a></p>
+            <p class="headerText"><a href="/log-in">Log in</a></p>
+        <% } %>
+    </div>
+    
+    <div class="msgFormWrapper">
+        <!-- welcome message and message form -->
+        <div class="msgFormSection">
+            <% if (!user) {%>
+                <h1 class="msgFormHeader">Welcome to Backstage %></h1>
+                <p class="msgFormText">Please <a class="msgFormLink" href="/log-out">login</a> or <a class="msgFormLink" href="/sign-up">create an account</a> to join the club.</p>
+            <% } else if (!user.member){ %>
+                <h1 class="msgFormHeader">Welcome to Backstage %></h1>
+                <p class="msgFormText">Join the <a class="msgFormLink" href="/newMember">membership</a> to post messages.</p>
+            <% } else { %>
+                <form class="msgForm" action="/" method="POST">
+                    <label for="message">Add post:</label>
+                    <input id="message" name="messageText" placeholder="your message..." type="text" />
+                <button class="mgsSubmitBtn" type="submit">Submit</button>
+                </form>
+            <% } %>
+        </div>
+
+        <!-- messages -->
+        <div> 
+            <% messages.forEach((message) => { %>
+                <%- include('message.ejs', {user: user, message: message}) %>
+            <% }) %> 
+        </div>
+    </div>
 </body>
 </html>
