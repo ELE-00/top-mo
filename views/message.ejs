@@ -1,7 +1,7 @@
 
 
 <div class="messageBox">
-    <% if (user && user.member) {%>
+    <% if (user && user.member || user.admin) {%>
 
     <div class="msgBoxHeader">
         <p> <%= message.users %></p>

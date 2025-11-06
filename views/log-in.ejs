@@ -1,22 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Log In</title>
+  <title>Log-in</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <% if (user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
-    <a href="/log-out">LOG OUT</a>
-  <% } else { %>
-    <h1>please log in</h1>
-    <form action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input id="username" name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-      <button type="submit">Log In</button>
-    </form>
-  <%}%>
+
+    <div class="headerSection">
+        <% if (user) {%>
+            <p class="headerText"><a href="/newmessage">New message</a></p>
+            <p class="headerText"><a href="/log-out">Log out</a></p>
+        <% } else { %>
+            <p class="headerText"><a href="/">Home</a></p>
+            <p class="headerText"><a href="/sign-up">Sign up</a></p>
+        <% } %>
+    </div>
+
+  <div class="loginFormWrapper">
+    <% if (user) {%>
+      <h1>WELCOME BACK <%= user.username %></h1>
+      <a href="/log-out">LOG OUT</a>
+    <% } else { %>
+      <h1 class="loginLabel" >Please log in</h1>
+      <form class="loginForm" action="/log-in" method="POST">
+        <label class="loginLabel" for="username">Username</label>
+        <input id="username" name="username" placeholder="username" type="text" />
+        <label class="loginLabel" for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        <button class="loginBn" type="submit">Log In</button>
+      </form>
+    <%}%>
+  </div>
 </body>
 </html>

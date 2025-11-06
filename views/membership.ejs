@@ -1,4 +1,51 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Log-in</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+    <div class="headerSection">
+        <% if (user) {%>
+            <p class="headerText"><a href="/newmessage">New message</a></p>
+            <p class="headerText"><a href="/log-out">Log out</a></p>
+        <% } else { %>
+            <p class="headerText"><a href="/">Home</a></p>
+            <p class="headerText"><a href="/sign-up">Sign up</a></p>
+        <% } %>
+    </div>
 
 
-<h1>MEMBER ACCESS</h1>
+
+  <div class="signupFormWrapper">
+
+    <h1 class="loginLabel" >Become a member</h1>
+    <p>I have strings but I’m not a puppet. What am I? </a></p>
+
+    <% if (typeof error !== "undefined") { %>
+    <div style="color: red;"><%= error %></div>
+    <% } %>
+
+    <% if (typeof success !== "undefined") { %>
+    <div style="color: green;"><%= success %></div>
+    <% } %>
+
+    <form class="signupForm"  method="POST" action="/sign-up/membership">
+
+        <label class="loginLabel" >Answer:</label>
+        <input type="text" name="membershipCode" ></input>
+
+        <button class="loginBn" type="Submit">Submit</button>
+
+    </form>
+  </div>
+</body>
+</html>
+
+
+
+
+

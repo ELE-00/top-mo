@@ -10,7 +10,7 @@
 
     <div class="headerSection">
         <% if (user) {%>
-            <p class="headerText"><a href="/newmessage">New message</a></p>
+            <p class="headerText"><a href="/">New message</a></p>
             <p class="headerText"><a href="/log-out">Log out</a></p>
         <% } else { %>
             <p class="headerText"><a href="/sign-up">Sign up</a></p>
@@ -23,10 +23,10 @@
         <div class="msgFormSection">
             <% if (!user) {%>
                 <h1 class="msgFormHeader">Welcome to Backstage %></h1>
-                <p class="msgFormText">Please <a class="msgFormLink" href="/log-out">login</a> or <a class="msgFormLink" href="/sign-up">create an account</a> to join the club.</p>
-            <% } else if (!user.member){ %>
+                <p class="msgFormText">Please <a class="msgFormLink" href="/log-in">login</a> or <a class="msgFormLink" href="/sign-up">create an account</a> to join the club.</p>
+            <% } else if (!user.member && !user.admin){ %>
                 <h1 class="msgFormHeader">Welcome to Backstage %></h1>
-                <p class="msgFormText">Join the <a class="msgFormLink" href="/newMember">membership</a> to post messages.</p>
+                <p class="msgFormText">Join the <a class="msgFormLink" href="/sign-up/membership">membership</a> to post messages.</p>
             <% } else { %>
                 <form class="msgForm" action="/" method="POST">
                     <label for="message">Add post:</label>

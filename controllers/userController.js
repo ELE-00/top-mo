@@ -22,5 +22,19 @@ async function createUser(data){
         
 }
 
+//membership
+async function membershipAcess(data, userID) {
+  if (data.trim().toLowerCase() === "guitar") {
+    await db.query(
+      `UPDATE users SET member = true WHERE id = $1`,
+      [userID]
+    );
+    return true; // ✅ success
+  } else {
+    return false; // ❌ wrong answer
+  }
+}
 
-module.exports = {createUser};
+
+
+module.exports = {createUser, membershipAcess};

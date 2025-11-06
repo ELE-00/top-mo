@@ -1,32 +1,58 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Log-in</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
 
-<h1>Become a member</h1>
-
-<% if (typeof error !== "undefined") { %>
-  <div style="color: red;"><%= error %></div>
-<% } %>
-
-<form method="POST" action="/sign-up">
-
-    <label>Username</label>
-    <input type="text" placeholder="Jack1993" name="userName" required></input>
-
-    <label>Full Name</label>
-    <input type="text" placeholder="Jack Black" name="fullName" required></input>
-
-    <label>Password</label>
-    <input type="password" name="password" required></input>
-
-    <label>Confirm Password</label>
-    <input type="password" name="passwordConfirm" required></input>
-
-    <button type="Submit">Submit</button>
-</form>
+    <div class="headerSection">
+        <% if (user) {%>
+            <p class="headerText"><a href="/">New message</a></p>
+            <p class="headerText"><a href="/log-out">Log out</a></p>
+        <% } else { %>
+            <p class="headerText"><a href="/">Home</a></p>
+            <p class="headerText"><a href="/sign-up">Sign up</a></p>
+        <% } %>
+    </div>
 
 
 
+  <div class="signupFormWrapper">
+
+    <h1 class="loginLabel" >Sign up</h1>
+    
+
+    <% if (typeof error !== "undefined") { %>
+      <div style="color: red;"><%= error %></div>
+    <% } %>
+
+    <form class="signupForm"  method="POST" action="/sign-up">
+
+        <label class="loginLabel" >Username</label>
+        <input type="text" placeholder="Jack1993" name="userName" required></input>
+
+        <label class="loginLabel">Full Name</label>
+        <input type="text" placeholder="Jack Black" name="fullName" required></input>
+
+        <label class="loginLabel">Password</label>
+        <input type="password" name="password" required></input>
+
+        <label class="loginLabel">Confirm Password</label>
+        <input type="password" name="passwordConfirm" required></input>
+
+        <button class="loginBn" type="Submit">Submit</button>
+
+        <p>Already have an account? Log-in <a class="msgFormLink" href="/log-in">here</a></p>
+
+    </form>
+  </div>
+</body>
+</html>
 
 
 
 
-<p>Already have an account? Log-in <a href="/log-in">here</a></p>
+
